@@ -270,7 +270,7 @@
                 <div class="collapse" id="submenu">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="./irradiacoes.html">
+                      <a data-bs-toggle="collapse" href="#subnav1">
                         <span class="sub-item">Irradiações</span>
                       </a>
                     </li>
@@ -700,141 +700,29 @@
 
 
                       <form action="" method="post">
-                        <h2>Cliente</h2>
+
+                        <h2>Irradiação</h2>
                         <div class="row">
-                          <div class="col-md6 col-6">
+                          <div class="col-md6 col-3">
                             <div class="form-group">
                               <select name="" id="" class="form-control">
-                                <option value="" hidden>Cliente</option>
+                                <option value="" hidden>Cidade</option>
                               </select>
                             </div>
                           </div>
-                          <div class="col-md6 col-6">
-                            <div class="form-group">
-                              <select name="" id="" class="form-control">
-                                <option value="" hidden>Irradiação</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-                        <br>
-
-                        <div class="table-responsive">
-                          <table class="table table-head-bg-success">
-                            <thead>
-                              <tr>
-                                <th>Cliente</th>
-                                <th>Média de consumo</th>
-                                <th>Valor do Kwh</th>
-                                <th>Distribuidora</th>
-                                <th>Descrição unidade consumidora</th>
-                                <th>Irradiação</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>João Silva</td>
-                                <td>450 kWh/mês</td>
-                                <td>R$ 0,80</td>
-                                <td>COPEL</td>
-                                <td>Sítio</td>
-                                <td>5.5 kWh/m²</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-
-                        <hr>
-
-                        <h2>Cálculo de Kit</h2>
-                        <div class="row">
                           <div class="col-md6 col-3">
                             <div class="form-group">
-                              <input type="number" class="form-control" id="email2" value="30" max="31" min="1"/>
-                              <small id="emailHelp2" class="form-text text-muted">Quantidade de dias</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input type="number" class="form-control" id="email2" min="1" max="100" placeholder="Eficiência do sistema"/>
-                              <small id="emailHelp2" class="form-text text-muted">Eficiência do Sistema (%)</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" value="0" disabled/>
-                              <small id="emailHelp2" class="form-text text-muted">Potência do kit (Kwp)</small>
-                            </div>
-                          </div>
-                        </div>
-
-                        <hr>
-
-                        <h2>Cálculo do Painel</h2>
-                        <div class="row">
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <select name="" id="" class="form-control">
-                                <option value="" hidden>Painel</option>
-                                <option value="">550</option>
-                                <option value="">570</option>
-                                <option value="">590</option>
-                                <option value="">690</option>
-                              </select>
-                              <small id="emailHelp2" class="form-text text-muted">(Watts)</small>
-                            </div>
-
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Potência do painel" disabled/>
-                              <small id="emailHelp2" class="form-text text-muted">(wp)</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Quantidade de painéis" disabled/>
-                              <small id="emailHelp2" class="form-text text-muted"></small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <select class="form-control" name="" id="">
-                                <option value="" hidden>Tipo de Estrutura</option>
-                                <option value="">Colonial</option>
-                                <option value="">Fribocimento</option>
-                                <option value="">Metálico</option>
-                                <option value="">Solo</option>
-                              </select>
-                            </div>
-                          </div>
-                          
-                        </div>
-
-                        <!-- <hr>
-                        <h2>Financeiro</h2>
-                        <div class="row">
-                          <div class="col-md6 col-6">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Valor do kit"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Somente números</small
-                              >
-                            </div>
-                          </div>
-                          <div class="col-md6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Margem de lucro"/>
+                              <input type="text" class="form-control" id="email2" placeholder="Irradiação"/>
                               <small id="emailHelp2" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                        </div> -->
+                          <div class="col-md6 col-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="" id="">
+                            </div>
+                          </div>
+                        </div>
+
 
                       </form>
 
