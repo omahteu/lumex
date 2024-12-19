@@ -5,6 +5,7 @@ const submenuItems = [
     { text: "Irradiações", link: `/forms/irradiacoes.html` },
     { text: "Clientes", link: `/forms/clientes.html` },
     { text: "Produtos", link: `/forms/produtos.html` },
+    
 ];
 
 document.addEventListener("DOMContentLoaded", function () {
