@@ -1,39 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Lumex Energia</title>
-    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
-    <link rel="icon" href="#" type="image/x-icon"/>
-
-    <!-- Fonts and icons -->
-    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script>
-      WebFont.load({
-        google: { families: ["Public Sans:300,400,500,600,700"] },
-        custom: {
-          families: [
-            "Font Awesome 5 Solid",
-            "Font Awesome 5 Regular",
-            "Font Awesome 5 Brands",
-            "simple-line-icons",
-          ],
-          urls: ["../assets/css/fonts.min.css"],
-        },
-        active: function () {
-          sessionStorage.fonts = true;
-        },
-      });
-    </script>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/plugins.min.css" />
-    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css" />
-
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="../assets/css/demo.css" />
-  </head>
+  <?php include("./assets/php/partials/header.php"); ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -135,7 +102,7 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Clientes</h3>
+                <h3 class="fw-bold mb-3">Irradiações</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
                     <a href="#">
@@ -146,7 +113,7 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Clientes</a>
+                    <a href="#">Irradiações</a>
                   </li>
                 </ul>
               </div>
@@ -161,280 +128,28 @@
 
 
                       <form action="" method="post">
-        
+
+                      
                         <div class="row">
-                          <div class="col-md6 col-6">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Nome do cliente"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Nome completo.</small
-                              >
-                            </div>
-                          </div>
                           <div class="col-md6 col-3">
                             <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="CPF do Cliente"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Somente números</small
-                              >
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Unidade Consumidora"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Somente números</small
-                              >
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <select class="form-control" name="" id="">
-                                <option value="">Rua</option>
-                                <option value="">Avenida</option>
-                                <option value="">Alameda</option>
+                              <select name="" id="" class="form-control">
+                                <option value="" hidden>Cidade</option>
                               </select>
                             </div>
                           </div>
-                          <div class="col-md6 col-8">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Logradouro"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Número"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Somente números</small
-                              >
-                            </div>
-                          </div>
                           <div class="col-md6 col-3">
                             <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Complemento"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="CEP"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Bairro"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Cidade"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Estado"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Descrição Unidade Consumidora"
-                              />
-                            </div>
-                          </div>
-                          
-
-
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
-                            <label class="form-check-label" for="flexRadioDefault1">Monofásico</label>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                            <label class="form-check-label" for="flexRadioDefault2">Bifásico</label>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                            <label class="form-check-label" for="flexRadioDefault2">Trifásico</label>
-                          </div>
-                        </div>
-
-                        <hr>
-
-                        <h2>Consumo do cliente</h2>
-                        <div class="row">
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="1° Mês"/>
+                              <input type="text" class="form-control" id="email2" placeholder="Irradiação"/>
                               <small id="emailHelp2" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md6 col-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="2° Mês"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="3° Mês"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="4° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="5° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="6° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="7° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="8° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="9° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="10° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="11° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="12° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
+                                <input type="file" class="form-control" name="" id="">
                             </div>
                           </div>
                         </div>
-
-                        <hr>
 
 
                       </form>
