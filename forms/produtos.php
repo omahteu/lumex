@@ -40,15 +40,7 @@
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="submenu">
-                  <ul class="nav nav-collapse" id="submenu-list"></ul>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/empresa.html">
-                  <i class="fas fa-file"></i>
-                  <p>Minha empresa</p>
-                </a>
+                <?php include('../assets/php/partials/submenu.php') ?>
               </li>
             </ul>
           </div>
@@ -426,6 +418,5 @@
       });
     </script>
 
-    <script type="module" src="../assets/js/abstracoes/menu.js"></script>
   </body>
 </html>

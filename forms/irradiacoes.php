@@ -40,9 +40,7 @@
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="submenu">
-                  <ul class="nav nav-collapse" id="submenu-list"></ul>
-                </div>
+                <?php include('../assets/php/partials/submenu.php') ?>
               </li>
             </ul>
           </div>

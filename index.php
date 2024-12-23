@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
               <img
                 src="#"
                 alt="Logo lumex"
@@ -40,9 +40,7 @@
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="submenu">
-                  <ul class="nav nav-collapse" id="submenu-list"></ul>
-                </div>
+                <?php include('../assets/php/partials/submenu.php') ?>
               </li>
             </ul>
           </div>
@@ -55,7 +53,7 @@
           <div class="main-header-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-              <a href="index.html" class="logo">
+              <a href="index.php" class="logo">
                 <img
                   src="#"
                   alt="navbar brand"
