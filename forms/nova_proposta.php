@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="../index.html" class="logo">
+            <a href="../index.php" class="logo">
               <img
                 src="#"
                 alt="Logo lumex"
@@ -33,24 +33,7 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <li class="nav-item active">
-                <a href="../index.html" class="collapsed">
-                  <i class="fas fa-home"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fas fa-plus"></i>
-                  <p>Nova Proposta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#">
-                  <i class="fas fa-file"></i>
-                  <p>Propostas</p>
-                </a>
-              </li>
+              <?php include('../assets/php/partials/menu.php') ?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
@@ -72,7 +55,7 @@
           <div class="main-header-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-              <a href="../index.html" class="logo">
+              <a href="../index.php" class="logo">
                 <img
                   src="#"
                   alt="navbar brand"

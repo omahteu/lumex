@@ -33,24 +33,7 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <li class="nav-item active">
-                <a href="./index.html" class="collapsed">
-                  <i class="fas fa-home"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./forms/nova_proposta.html">
-                  <i class="fas fa-plus"></i>
-                  <p>Nova Proposta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./tables/propostas.html">
-                  <i class="fas fa-file"></i>
-                  <p>Propostas</p>
-                </a>
-              </li>
+              <?php include('./assets/php/partials/menu.php'); ?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
@@ -110,7 +93,7 @@
               </div>
               <div class="ms-md-auto py-2 py-md-0">
                 <a href="#" class="btn btn-label-info btn-round me-2">Propostas</a>
-                <a href="./forms/nova_proposta.html" class="btn btn-primary btn-round">Nova Proposta</a>
+                <a href="./forms/nova_proposta.php" class="btn btn-primary btn-round">Nova Proposta</a>
               </div>
             </div>
             <div class="row">
