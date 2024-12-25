@@ -8,14 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="../index.php" class="logo">
-              <img
-                src="#"
-                alt="Logo lumex"
-                class="navbar-brand"
-                height="20"
-              />
-            </a>
+            <?php include('./assets/php/partials/logo.php') ?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -73,12 +66,6 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <?php 
-                
-                $host = $_SERVER['HTTP_HOST'];
-                echo "O host atual é: " . $host;
-                
-                ?>
                 <h3 class="fw-bold mb-3">Nova proposta</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
