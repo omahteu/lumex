@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <?php include("./assets/php/partials/header.php"); ?>
+  <?php include("../assets/php/partials/header.php"); ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include('./assets/php/partials/logo.php') ?>
+            <?php include('../assets/php/partials/logo.php') ?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
