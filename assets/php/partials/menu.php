@@ -11,13 +11,13 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="/lumex/tables/propostas.html">
+    <a href="/lumex/tables/propostas.php">
         <i class="fas fa-file"></i>
         <p>Propostas</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="/lumex/forms/empresa.html">
+    <a href="/lumex/forms/empresa.php">
         <i class="fas fa-file"></i>
         <p>Minha empresa</p>
     </a>
