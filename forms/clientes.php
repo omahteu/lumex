@@ -98,7 +98,7 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
-                      <form action="" method="post">
+                      <form action="../assets/php/clientes/create.php" method="post">
                         <div class="row">
                           <div class="col-md6 col-6">
                             <div class="form-group">
@@ -121,9 +121,9 @@
                           <div class="col-md6 col-2">
                             <div class="form-group">
                               <select class="form-control" name="tipo_logradouro" id="tipo_logradouro">
-                                <option value="">Rua</option>
-                                <option value="">Avenida</option>
-                                <option value="">Alameda</option>
+                                <option value="1">Rua</option>
+                                <option value="2">Avenida</option>
+                                <option value="3">Alameda</option>
                               </select>
                             </div>
                           </div>
@@ -169,15 +169,15 @@
                             </div>
                           </div>
                           <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="tipo_fase" id="monofasico" value="monofasico" />
+                            <input class="form-check-input" type="radio" name="tipo_fase" id="monofasico" value="1" />
                             <label class="form-check-label" for="monofasico">Monofásico</label>
                           </div>
                           <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="tipo_fase" id="bifasico" value="bifasico" />
+                            <input class="form-check-input" type="radio" name="tipo_fase" id="bifasico" value="2" />
                             <label class="form-check-label" for="bifasico">Bifásico</label>
                           </div>
                           <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="tipo_fase" id="trifasico" value="trifasico" />
+                            <input class="form-check-input" type="radio" name="tipo_fase" id="trifasico" value="3" />
                             <label class="form-check-label" for="trifasico">Trifásico</label>
                           </div>
                         </div>
@@ -259,227 +259,19 @@
                             </div>
                           </div>
                         </div>
-                        <hr>
+                        
+                        <div class="">
+                          <button class="btn btn-success">Salvar</button>
+                          <button class="btn btn-danger">Limpar</button>
+                        </div>
                       </form>
-                    </div>
-                    <div class="card-action">
-                      <button class="btn btn-success">Salvar</button>
-                      <button class="btn btn-danger">Limpar</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
          </div>
-
-        <footer class="footer">
-          <!-- <div class="container-fluid d-flex justify-content-between">
-            <div class="copyright">
-              2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
-            </div>
-            <div>
-              Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-            </div>
-          </div> -->
-        </footer>
       </div>
-
-      <!-- Custom template | don't include it in your project! -->
-      <div class="custom-template">
-        <div class="title">Settings</div>
-        <div class="custom-content">
-          <div class="switcher">
-            <div class="switch-block">
-              <h4>Logo Header</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="selected changeLogoHeaderColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="purple"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="light-blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="green"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="orange"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="red"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="white"
-                ></button>
-                <br />
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="dark2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="purple2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="light-blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="green2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="orange2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="red2"
-                ></button>
-              </div>
-            </div>
-            <div class="switch-block">
-              <h4>Navbar Header</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="purple"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="light-blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="green"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="orange"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="red"
-                ></button>
-                <button
-                  type="button"
-                  class="selected changeTopBarColor"
-                  data-color="white"
-                ></button>
-                <br />
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="dark2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="purple2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="light-blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="green2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="orange2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="red2"
-                ></button>
-              </div>
-            </div>
-            <div class="switch-block">
-              <h4>Sidebar</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="changeSideBarColor"
-                  data-color="white"
-                ></button>
-                <button
-                  type="button"
-                  class="selected changeSideBarColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeSideBarColor"
-                  data-color="dark2"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="custom-toggle">
-          <i class="icon-settings"></i>
-        </div>
-      </div>
-      <!-- End Custom template -->
     </div>
     <?php include('../assets/php/partials/footer.php'); ?>
   </body>

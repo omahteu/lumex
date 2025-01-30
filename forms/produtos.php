@@ -98,38 +98,38 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
-                      <form action="" method="post">
+                      <form action="../assets/php/produtos/create.php" method="post">
                         <div class="row">
-                          <div class="col-md6 col-6">
+                          <div class="col-md-6 col-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Nome do produto"/>
-                              <small id="emailHelp2" class="form-text text-muted">Nome do produto</small>
+                              <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do produto"/>
+                              <small id="nome_help" class="form-text text-muted">Nome do produto</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-6">
+                          <div class="col-md-6 col-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="NCM do produto"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
+                              <input type="text" class="form-control" name="ncm" id="ncm" placeholder="NCM do produto"/>
+                              <small id="ncm_help" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-6">
+                          <div class="col-md-6 col-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Descrição do produto"/>
-                              <small id="emailHelp2" class="form-text text-muted">Descrição do produto</small>
+                              <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do produto"/>
+                              <small id="descricao_help" class="form-text text-muted">Descrição do produto</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-6">
+                          <div class="col-md-6 col-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="Fornecedor"/>
-                              <small id="emailHelp2" class="form-text text-muted">Fornecedor do produto</small>
+                              <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor"/>
+                              <small id="fornecedor_help" class="form-text text-muted">Fornecedor do produto</small>
                             </div>
                           </div>
                         </div>
+                        <div class="card-action">
+                          <button class="btn btn-success">Salvar</button>
+                          <button class="btn btn-danger">Limpar</button>
+                        </div>
                       </form>
-                    </div>
-                    <div class="card-action">
-                      <button class="btn btn-success">Salvar</button>
-                      <button class="btn btn-danger">Limpar</button>
                     </div>
                   </div>
                 </div>
