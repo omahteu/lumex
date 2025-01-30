@@ -100,25 +100,25 @@
                     <div class="card-body">
                       <form action="../assets/php/clientes/create.php" method="post">
                         <div class="row">
-                          <div class="col-md6 col-6">
+                          <div class="col-md-6 col-6">
                             <div class="form-group">
                               <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" placeholder="Nome do cliente" />
                               <small id="nome_cliente_help" class="form-text text-muted">Nome completo.</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="cpf_cliente" name="cpf_cliente" placeholder="CPF do Cliente" />
                               <small id="cpf_cliente_help" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="unidade_consumidora" name="unidade_consumidora" placeholder="Unidade Consumidora" />
                               <small id="unidade_consumidora_help" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-2 col-2">
                             <div class="form-group">
                               <select class="form-control" name="tipo_logradouro" id="tipo_logradouro">
                                 <option value="1">Rua</option>
@@ -127,56 +127,63 @@
                               </select>
                             </div>
                           </div>
-                          <div class="col-md6 col-8">
+                          <div class="col-md-8 col-8">
                             <div class="form-group">
                               <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro" />
                             </div>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-2 col-2">
                             <div class="form-group">
                               <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" />
                               <small id="numero_help" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input type="text" class="form-control" id="descricao_unidade_consumidora" name="descricao_unidade_consumidora" placeholder="Descrição Unidade Consumidora" />
                             </div>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-2 col-2">
+                            <div class="form-group">
+                              <select class="form-control" name="distribuidora" id="distribuidora">
+                                <option value="" hidden>Distribuidora</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-1 col-1">
                             <input class="form-check-input" type="radio" name="tipo_fase" id="monofasico" value="1" />
                             <label class="form-check-label" for="monofasico">Monofásico</label>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-1 col-1">
                             <input class="form-check-input" type="radio" name="tipo_fase" id="bifasico" value="2" />
                             <label class="form-check-label" for="bifasico">Bifásico</label>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-1 col-1">
                             <input class="form-check-input" type="radio" name="tipo_fase" id="trifasico" value="3" />
                             <label class="form-check-label" for="trifasico">Trifásico</label>
                           </div>
@@ -276,3 +283,47 @@
     <?php include('../assets/php/partials/footer.php'); ?>
   </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Ao mudar o valor do input estado
+    $('#estado').change(function() {
+      // Obtém o valor selecionado do estado
+      var estadoSelecionado = $(this).val();
+
+      // Verifica se um estado foi selecionado
+      if (!estadoSelecionado) {
+        // Exibe o alerta se nenhum estado for selecionado
+        alert('É necessário selecionar um estado primeiro.');
+        return; // Interrompe a execução se não houver estado selecionado
+      }
+
+      // Limpa as opções existentes no select
+      $('#distribuidora').empty();
+
+      // Carrega o arquivo JSON
+      $.getJSON('../assets/json/tarifas.json', function(data) {
+        // Filtra os itens do JSON onde o uf é igual ao estado selecionado
+        var itemsFiltrados = data.filter(function(item) {
+          return item.uf === estadoSelecionado;
+        });
+
+        // Se não houver itens filtrados, exibe uma mensagem
+        if (itemsFiltrados.length === 0) {
+          alert('Não há distribuidoras disponíveis para o estado selecionado.');
+        } else {
+          // Para cada item filtrado, cria uma nova opção
+          $.each(itemsFiltrados, function(index, item) {
+            $('#distribuidora').append(
+              $('<option>', {
+                value: item.id, // Atribui o id como value
+                text: item.distribuidora // Atribui o nome do distribuidor como texto
+              })
+            );
+          });
+        }
+      });
+    });
+  });
+</script>
