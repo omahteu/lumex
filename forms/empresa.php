@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <?php include("../assets/php/partials/header.php"); ?>
+  <?php include "../assets/php/partials/header.php"; ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include('../assets/php/partials/logo.php') ?>
+            <?php include '../assets/php/partials/logo.php'?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -26,14 +26,14 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <?php include('../assets/php/partials/menu.php') ?>
+              <?php include '../assets/php/partials/menu.php'?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <?php include('../assets/php/partials/submenu.php') ?>
+                <?php include '../assets/php/partials/submenu.php'?>
               </li>
             </ul>
           </div>
@@ -76,7 +76,7 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Clientes</h3>
+                <h3 class="fw-bold mb-3">Empresa</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
                     <a href="#">
@@ -87,7 +87,7 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Clientes</a>
+                    <a href="#">Empresa</a>
                   </li>
                 </ul>
               </div>
@@ -98,507 +98,175 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
-
-
-
-                      <form action="" method="post">
-        
+                      <form action="../assets/php/empresa/create.php" method="post">
                         <div class="row">
-                          <div class="col-md6 col-6">
+                          <div class="col-md-9 col-9">
                             <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Nome do cliente"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Nome completo.</small
-                              >
+                              <input type="text" class="form-control" name="razao_social" id="razao_social" placeholder="Razão Social"/>
+                              <small id="razao_social_help" class="form-text text-muted">Razão Social</small>
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
-                                placeholder="CPF do Cliente"
+                                id="cnpj" name="cnpj"
+                                placeholder="CNPJ"
                               />
-                              <small id="emailHelp2" class="form-text text-muted"
+                              <small id="cnpj_help" class="form-text text-muted"
                                 >Somente números</small
                               >
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-2 col-2">
                             <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Unidade Consumidora"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted"
-                                >Somente números</small
-                              >
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <select class="form-control" name="" id="">
-                                <option value="">Rua</option>
-                                <option value="">Avenida</option>
-                                <option value="">Alameda</option>
+                              <select class="form-control" name="tipo_logradouro" id="tipo_logradouro">
+                                <option value="1">Rua</option>
+                                <option value="2">Avenida</option>
+                                <option value="3">Alameda</option>
                               </select>
                             </div>
                           </div>
-                          <div class="col-md6 col-8">
+                          <div class="col-md-5 col-5">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
+                                id="logradouro" name="logradouro"
                                 placeholder="Logradouro"
                               />
                             </div>
                           </div>
-                          <div class="col-md6 col-2">
+                          <div class="col-md-2 col-2">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
+                                id="numero" name="numero"
                                 placeholder="Número"
                               />
-                              <small id="emailHelp2" class="form-text text-muted"
+                              <small id="numero_help" class="form-text text-muted"
                                 >Somente números</small
                               >
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
+                                id="complemento" name="complemento"
                                 placeholder="Complemento"
                               />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
+                                id="cep" name="cep"
                                 placeholder="CEP"
                               />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <select class="form-control" name="estado" id="estado">
+                                <option value="" hidden>Estado</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <select class="form-control" name="cidade" id="cidade">
+                                <option value="" hidden>Cidade</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="email2"
+                                id="bairro" name="bairro"
                                 placeholder="Bairro"
                               />
                             </div>
                           </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Cidade"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Estado"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-md6 col-3">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="Descrição Unidade Consumidora"
-                              />
-                            </div>
-                          </div>
-                          
-
-
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
-                            <label class="form-check-label" for="flexRadioDefault1">Monofásico</label>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                            <label class="form-check-label" for="flexRadioDefault2">Bifásico</label>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                            <label class="form-check-label" for="flexRadioDefault2">Trifásico</label>
-                          </div>
                         </div>
-
-                        <hr>
-
-                        <h2>Consumo do cliente</h2>
-                        <div class="row">
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="1° Mês"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="2° Mês"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="email2" placeholder="3° Mês"/>
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="4° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="5° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="6° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="7° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="8° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="9° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="10° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="11° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md6 col-2">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email2"
-                                placeholder="12° Mês"
-                              />
-                              <small id="emailHelp2" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
+                        <div class="card-action">
+                          <button class="btn btn-success">Salvar</button>
+                          <button class="btn btn-danger">Limpar</button>
                         </div>
-
-                        <hr>
-
-
                       </form>
-                    </div>
-                    <div class="card-action">
-                      <button class="btn btn-success">Salvar</button>
-                      <button class="btn btn-danger">Limpar</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
          </div>
-
-        <footer class="footer">
-          <!-- <div class="container-fluid d-flex justify-content-between">
-            <div class="copyright">
-              2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
-            </div>
-            <div>
-              Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-            </div>
-          </div> -->
-        </footer>
       </div>
-
-      <!-- Custom template | don't include it in your project! -->
-      <div class="custom-template">
-        <div class="title">Settings</div>
-        <div class="custom-content">
-          <div class="switcher">
-            <div class="switch-block">
-              <h4>Logo Header</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="selected changeLogoHeaderColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="purple"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="light-blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="green"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="orange"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="red"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="white"
-                ></button>
-                <br />
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="dark2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="purple2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="light-blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="green2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="orange2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeLogoHeaderColor"
-                  data-color="red2"
-                ></button>
-              </div>
-            </div>
-            <div class="switch-block">
-              <h4>Navbar Header</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="purple"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="light-blue"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="green"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="orange"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="red"
-                ></button>
-                <button
-                  type="button"
-                  class="selected changeTopBarColor"
-                  data-color="white"
-                ></button>
-                <br />
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="dark2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="purple2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="light-blue2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="green2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="orange2"
-                ></button>
-                <button
-                  type="button"
-                  class="changeTopBarColor"
-                  data-color="red2"
-                ></button>
-              </div>
-            </div>
-            <div class="switch-block">
-              <h4>Sidebar</h4>
-              <div class="btnSwitch">
-                <button
-                  type="button"
-                  class="changeSideBarColor"
-                  data-color="white"
-                ></button>
-                <button
-                  type="button"
-                  class="selected changeSideBarColor"
-                  data-color="dark"
-                ></button>
-                <button
-                  type="button"
-                  class="changeSideBarColor"
-                  data-color="dark2"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="custom-toggle">
-          <i class="icon-settings"></i>
-        </div>
-      </div>
-      <!-- End Custom template -->
     </div>
-    <?php include('../assets/php/partials/footer.php') ?>
+    <?php include '../assets/php/partials/footer.php'?>
   </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    // Lista de estados
+    let estados = {
+        "AC": "Acre",
+        "AL": "Alagoas",
+        "AP": "Amapá",
+        "AM": "Amazonas",
+        "BA": "Bahia",
+        "CE": "Ceará",
+        "DF": "Distrito Federal",
+        "ES": "Espírito Santo",
+        "GO": "Goiás",
+        "MA": "Maranhão",
+        "MT": "Mato Grosso",
+        "MS": "Mato Grosso do Sul",
+        "MG": "Minas Gerais",
+        "PA": "Pará",
+        "PB": "Paraíba",
+        "PR": "Paraná",
+        "PE": "Pernambuco",
+        "PI": "Piauí",
+        "RJ": "Rio de Janeiro",
+        "RN": "Rio Grande do Norte",
+        "RS": "Rio Grande do Sul",
+        "RO": "Rondônia",
+        "RR": "Roraima",
+        "SC": "Santa Catarina",
+        "SP": "São Paulo",
+        "SE": "Sergipe",
+        "TO": "Tocantins"
+    };
+
+    // Preencher o select de estados
+    $.each(estados, function (sigla, nome) {
+        $("#estado").append(new Option(nome, sigla));
+    });
+
+    // Evento de mudança do estado
+    $("#estado").on("change", function () {
+        let estadoSelecionado = $(this).val();
+        $("#cidade").empty().append(new Option("Carregando...", "", true, true));
+
+        if (estadoSelecionado) {
+            $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
+                $("#cidade").empty().append(new Option("Cidade", "", true, true));
+                $.each(data, function (index, cidade) {
+                    $("#cidade").append(new Option(cidade.nome, cidade.nome));
+                });
+            });
+        } else {
+            $("#cidade").empty().append(new Option("Cidade", "", true, true));
+        }
+    });
+});
+</script>
