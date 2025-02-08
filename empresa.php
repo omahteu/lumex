@@ -98,33 +98,38 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
+                      <?php
+                      require_once './assets/php/crud.php';
+
+                      // Criar instância da classe Database
+                      $db = new Database();
+
+                      // Recuperar os dados da empresa com id = 1
+                      $empresaJson = $db->getEmpresaById(1);
+                      $empresa = json_decode($empresaJson, true);
+                      $estadoSelecionado = $empresa[0]['estado'];
+                      $cidadeSelecionada = $empresa[0]['cidade'];
+                      ?>
                       <form action="./assets/php/empresa/create.php" method="post">
                         <div class="row">
                           <div class="col-md-9 col-9">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="razao_social" id="razao_social" placeholder="Razão Social"/>
+                              <input type="text" class="form-control" name="razao_social" id="razao_social" value="<?= $empresa[0]['razao_social'] ?? '' ?>" placeholder="Razão Social"/>
                               <small id="razao_social_help" class="form-text text-muted">Razão Social</small>
                             </div>
                           </div>
                           <div class="col-md-3 col-3">
                             <div class="form-group">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="cnpj" name="cnpj"
-                                placeholder="CNPJ"
-                              />
-                              <small id="cnpj_help" class="form-text text-muted"
-                                >Somente números</small
-                              >
+                              <input type="text" class="form-control" id="cnpj" name="cnpj" value="<?= $empresa[0]['cnpj'] ?? '' ?>" placeholder="CNPJ"/>
+                              <small id="cnpj_help" class="form-text text-muted">Somente números</small>
                             </div>
                           </div>
                           <div class="col-md-2 col-2">
                             <div class="form-group">
                               <select class="form-control" name="tipo_logradouro" id="tipo_logradouro">
-                                <option value="1">Rua</option>
-                                <option value="2">Avenida</option>
-                                <option value="3">Alameda</option>
+                                <option value="1" <?= ($empresa[0]['tipo_logradouro'] ?? '') == 1 ? 'selected' : '' ?>>Rua</option>
+                                <option value="2" <?= ($empresa[0]['tipo_logradouro'] ?? '') == 2 ? 'selected' : '' ?>>Avenida</option>
+                                <option value="3" <?= ($empresa[0]['tipo_logradouro'] ?? '') == 3 ? 'selected' : '' ?>>Alameda</option>
                               </select>
                             </div>
                           </div>
@@ -133,7 +138,7 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="logradouro" name="logradouro"
+                                id="logradouro" name="logradouro" value="<?= $empresa[0]['logradouro'] ?? '' ?>"
                                 placeholder="Logradouro"
                               />
                             </div>
@@ -143,7 +148,7 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="numero" name="numero"
+                                id="numero" name="numero" value="<?= $empresa[0]['numero'] ?? '' ?>"
                                 placeholder="Número"
                               />
                               <small id="numero_help" class="form-text text-muted"
@@ -156,7 +161,7 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="complemento" name="complemento"
+                                id="complemento" name="complemento" value="<?= $empresa[0]['complemento'] ?? '' ?>"
                                 placeholder="Complemento"
                               />
                             </div>
@@ -166,7 +171,7 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="cep" name="cep"
+                                id="cep" name="cep" value="<?= $empresa[0]['cep'] ?? '' ?>"
                                 placeholder="CEP"
                               />
                             </div>
@@ -190,7 +195,7 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="bairro" name="bairro"
+                                id="bairro" name="bairro" value="<?= $empresa[0]['bairro'] ?? '' ?>"
                                 placeholder="Bairro"
                               />
                             </div>
@@ -214,8 +219,9 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-$(document).ready(function () {
+  $(document).ready(function () {
     // Lista de estados
     let estados = {
         "AC": "Acre",
@@ -252,21 +258,38 @@ $(document).ready(function () {
         $("#estado").append(new Option(nome, sigla));
     });
 
+    // Preencher o estado automaticamente
+    const estadoSelecionado = "<?= $estadoSelecionado ?>"; // Pegando valor do PHP
+    const cidadeSelecionada = "<?= $cidadeSelecionada ?>"; // Pegando valor do PHP
+
+    $("#estado").val(estadoSelecionado).trigger('change'); // Setar estado
+
     // Evento de mudança do estado
     $("#estado").on("change", function () {
-        let estadoSelecionado = $(this).val();
-        $("#cidade").empty().append(new Option("Carregando...", "", true, true));
+      let estadoSelecionado = $(this).val();
+      $("#cidade").empty().append(new Option("Carregando...", "", true, true));
 
-        if (estadoSelecionado) {
-            $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
-                $("#cidade").empty().append(new Option("Cidade", "", true, true));
-                $.each(data, function (index, cidade) {
-                    $("#cidade").append(new Option(cidade.nome, cidade.nome));
-                });
-            });
-        } else {
-            $("#cidade").empty().append(new Option("Cidade", "", true, true));
-        }
+      if (estadoSelecionado) {
+        $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
+          $("#cidade").empty().append(new Option("Cidade", "", true, true)); // Resetar as opções de cidade
+
+          $.each(data, function (index, cidade) {
+            $("#cidade").append(new Option(cidade.nome, cidade.nome));
+          });
+
+          // Selecionar a cidade automaticamente após preencher as cidades
+          if (cidadeSelecionada) {
+            $("#cidade").val(cidadeSelecionada);
+          }
+        });
+      } else {
+        $("#cidade").empty().append(new Option("Cidade", "", true, true));
+      }
     });
-});
+
+    // Disparar a mudança de estado manualmente para carregar as cidades ao carregar a página
+    if (estadoSelecionado) {
+      $("#estado").trigger('change');
+    }
+  });
 </script>

@@ -49,16 +49,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => false, 'errors' => $errors]);
         exit;
     }
-    print_r($_POST);
-    $query = "INSERT INTO empresa (razao_social, cnpj, tipo_logradouro, logradouro, numero, complemento, cep, estado, cidade, bairro) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // Ajustando para realizar um update
+    $query = "UPDATE empresa SET 
+                razao_social = ?, cnpj = ?, tipo_logradouro = ?, logradouro = ?, 
+                numero = ?, complemento = ?, cep = ?, estado = ?, cidade = ?, bairro = ? 
+              WHERE id = 1"; // Aqui você está atualizando o registro com id = 1
+
     $params = [$razao_social, $cnpj, $tipo_logradouro, $logradouro, $numero, $complemento, $cep, $estado, $cidade, $bairro];
     
     $result = $db->executeQuery($query, $params);
     
     if ($result) {
-        echo json_encode(['success' => true, 'message' => 'Empresa salvo com sucesso.']);
+        echo json_encode(['success' => true, 'message' => 'Empresa atualizada com sucesso.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco de dados.']);
+        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar no banco de dados.']);
     }
 }
+?>

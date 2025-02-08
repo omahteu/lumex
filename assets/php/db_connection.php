@@ -4,7 +4,7 @@ class DBConnection {
     private static $host = "localhost";
     private static $dbname = "lumex";
     private static $username = "root";
-    private static $password = "";
+    private static $password = "232911";
     private static $conn;
 
     public static function getConnection() {

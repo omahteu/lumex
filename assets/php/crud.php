@@ -25,6 +25,11 @@ class Database {
             return json_encode(["error" => "Erro na execução da query: " . $e->getMessage()]);
         }
     }
+
+    public function getEmpresaById($id) {
+        $query = "SELECT * FROM empresa WHERE id = ?";
+        return $this->executeQuery($query, [$id]);
+    }
 }
 
 // Exemplo de uso:
