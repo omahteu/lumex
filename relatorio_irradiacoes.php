@@ -72,40 +72,57 @@
                 <div class="card">
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <h4 class="card-title">Propostas</h4>
+                      <h4 class="card-title">Irradiações</h4>
                       <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
                           <i class="fa fa-plus"></i>
-                          Nova proposta
+                          Nova irradiação
                       </button>
                     </div>
                   </div>
                   <div class="card-body">
+                    <?php
+                    require_once './assets/php/crud.php';
+
+                    $db = new Database();
+
+                    // Consulta para buscar todas as informações de irradiação
+                    $query = "SELECT * FROM irradiacoes";
+                    $resultado = json_decode($db->executeQuery($query), true);
+                    ?>
                     <div class="table-responsive">
                       <table id="add-row" class="display table table-striped table-hover">
                         <thead>
                           <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <th>Estado</th>
+                            <th>Cidade</th>
+                            <th>Irradiação</th>
                             <th style="width: 10%">Ações</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>
-                              <div class="form-button-action">
-                                <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                  <i class="fa fa-edit"></i>
-                                </button>
-                                <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                  <i class="fa fa-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
+                          <?php if (!empty($resultado)) : ?>
+                            <?php foreach ($resultado as $dados) : ?>
+                              <tr>
+                                <td><?= htmlspecialchars($dados['estado']) ?></td>
+                                <td><?= htmlspecialchars($dados['cidade']) ?></td>
+                                <td><?= htmlspecialchars($dados['irradiacao']) ?></td>
+                                <td>
+                                  <div class="form-button-action">
+                                    <button type="button" data-bs-toggle="tooltip" title="Editar" class="btn btn-link btn-primary btn-lg">
+                                      <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
+                                      <i class="fa fa-times"></i>
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            <?php endforeach; ?>
+                          <?php else : ?>
+                            <tr>
+                              <td colspan="4" class="text-center">Nenhuma informação encontrada.</td>
+                            </tr>
+                          <?php endif; ?>
                         </tbody>
                       </table>
                     </div>
@@ -130,62 +147,6 @@
     <script src="./assets/js/kaiadmin.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="./assets/js/setting-demo2.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#basic-datatables").DataTable({});
 
-        $("#multi-filter-select").DataTable({
-          pageLength: 5,
-          initComplete: function () {
-            this.api()
-              .columns()
-              .every(function () {
-                var column = this;
-                var select = $(
-                  '<select class="form-select"><option value=""></option></select>'
-                )
-                  .appendTo($(column.footer()).empty())
-                  .on("change", function () {
-                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                    column
-                      .search(val ? "^" + val + "$" : "", true, false)
-                      .draw();
-                  });
-
-                column
-                  .data()
-                  .unique()
-                  .sort()
-                  .each(function (d, j) {
-                    select.append(
-                      '<option value="' + d + '">' + d + "</option>"
-                    );
-                  });
-              });
-          },
-        });
-
-        // Add Row
-        $("#add-row").DataTable({
-          pageLength: 5,
-        });
-
-        var action =
-          '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-        $("#addRowButton").click(function () {
-          $("#add-row")
-            .dataTable()
-            .fnAddData([
-              $("#addName").val(),
-              $("#addPosition").val(),
-              $("#addOffice").val(),
-              action,
-            ]);
-          $("#addRowModal").modal("hide");
-        });
-      });
-    </script>
   </body>
 </html>

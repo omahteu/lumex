@@ -75,7 +75,7 @@
                       <h4 class="card-title">Clientes</h4>
                       <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
                           <i class="fa fa-plus"></i>
-                          Nova proposta
+                          Novo cliente
                       </button>
                     </div>
                   </div>
