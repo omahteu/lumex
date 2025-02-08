@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <?php include "../assets/php/partials/header.php"; ?>
+  <?php include "./assets/php/partials/header.php"; ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include '../assets/php/partials/logo.php'?>
+            <?php include './assets/php/partials/logo.php'?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -26,14 +26,14 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <?php include '../assets/php/partials/menu.php'?>
+              <?php include './assets/php/partials/menu.php'?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <?php include '../assets/php/partials/submenu.php'?>
+                <?php include './assets/php/partials/submenu.php'?>
               </li>
             </ul>
           </div>
@@ -92,7 +92,7 @@
                         <h2>Cliente</h2>
                         <div class="row">
                           <?php
-                              require_once '../assets/php/crud.php';
+                              require_once './assets/php/crud.php';
                               $db              = new Database();
                               $queryCliente    = "SELECT id, nome, distribuidora, descricao_unidade_consumidora, (mes_1 + mes_2 + mes_3 + mes_4 + mes_5 + mes_6 + mes_7 + mes_8 + mes_9 + mes_10 + mes_11 + mes_12) / 12 AS media_consumo FROM clientes";
                               $clientes        = json_decode($db->executeQuery($queryCliente), true);
@@ -229,7 +229,7 @@
          </div>
       </div>
     </div>
-    <?php include '../assets/php/partials/footer.php'?>
+    <?php include './assets/php/partials/footer.php'?>
   </body>
 </html>
 

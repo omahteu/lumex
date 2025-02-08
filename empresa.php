@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <?php include "../assets/php/partials/header.php"; ?>
+  <?php include "./assets/php/partials/header.php"; ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include '../assets/php/partials/logo.php'?>
+            <?php include './assets/php/partials/logo.php'?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -26,14 +26,14 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <?php include '../assets/php/partials/menu.php'?>
+              <?php include './assets/php/partials/menu.php'?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <?php include '../assets/php/partials/submenu.php'?>
+                <?php include './assets/php/partials/submenu.php'?>
               </li>
             </ul>
           </div>
@@ -76,7 +76,7 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Irradiações</h3>
+                <h3 class="fw-bold mb-3">Empresa</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
                     <a href="#">
@@ -87,7 +87,7 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Irradiações</a>
+                    <a href="#">Empresa</a>
                   </li>
                 </ul>
               </div>
@@ -98,31 +98,101 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
-                      <form action="../assets/php/irradiacoes/create.php" method="post">
+                      <form action="./assets/php/empresa/create.php" method="post">
                         <div class="row">
-                          <div class="col-md-6 col-3">
+                          <div class="col-md-9 col-9">
                             <div class="form-group">
-                                <select name="estado" id="estado" class="form-control">
-                                    <option value="" hidden>Estado</option>
-                                </select>
+                              <input type="text" class="form-control" name="razao_social" id="razao_social" placeholder="Razão Social"/>
+                              <small id="razao_social_help" class="form-text text-muted">Razão Social</small>
                             </div>
                           </div>
-                          <div class="col-md-6 col-3">
+                          <div class="col-md-3 col-3">
                             <div class="form-group">
-                                <select name="cidade" id="cidade" class="form-control">
-                                    <option value="" hidden>Cidade</option>
-                                </select>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="cnpj" name="cnpj"
+                                placeholder="CNPJ"
+                              />
+                              <small id="cnpj_help" class="form-text text-muted"
+                                >Somente números</small
+                              >
                             </div>
                           </div>
-                          <div class="col-md-6 col-3">
+                          <div class="col-md-2 col-2">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="irradiacao" id="irradiacao" placeholder="Irradiação"/>
-                              <small id="irradiacao_help" class="form-text text-muted">Somente números</small>
+                              <select class="form-control" name="tipo_logradouro" id="tipo_logradouro">
+                                <option value="1">Rua</option>
+                                <option value="2">Avenida</option>
+                                <option value="3">Alameda</option>
+                              </select>
                             </div>
                           </div>
-                          <div class="col-md-6 col-6">
+                          <div class="col-md-5 col-5">
                             <div class="form-group">
-                                <input type="file" class="form-control" name="arquivo" id="arquivo" accept=".xlsx">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="logradouro" name="logradouro"
+                                placeholder="Logradouro"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-2 col-2">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="numero" name="numero"
+                                placeholder="Número"
+                              />
+                              <small id="numero_help" class="form-text text-muted"
+                                >Somente números</small
+                              >
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="complemento" name="complemento"
+                                placeholder="Complemento"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="cep" name="cep"
+                                placeholder="CEP"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <select class="form-control" name="estado" id="estado">
+                                <option value="" hidden>Estado</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <select class="form-control" name="cidade" id="cidade">
+                                <option value="" hidden>Cidade</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="bairro" name="bairro"
+                                placeholder="Bairro"
+                              />
                             </div>
                           </div>
                         </div>
@@ -139,7 +209,7 @@
          </div>
       </div>
     </div>
-    <?php include '../assets/php/partials/footer.php'?>
+    <?php include './assets/php/partials/footer.php'?>
   </body>
 </html>
 

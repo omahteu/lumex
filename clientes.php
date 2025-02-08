@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <?php include("../assets/php/partials/header.php"); ?>
+  <?php include("./assets/php/partials/header.php"); ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include('../assets/php/partials/logo.php') ?>
+            <?php include('./assets/php/partials/logo.php') ?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -26,14 +26,14 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <?php include('../assets/php/partials/menu.php') ?>
+              <?php include('./assets/php/partials/menu.php') ?>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
                   <p>Dados</p>
                   <span class="caret"></span>
                 </a>
-                <?php include('../assets/php/partials/submenu.php') ?>
+                <?php include('./assets/php/partials/submenu.php') ?>
               </li>
             </ul>
           </div>
@@ -98,7 +98,7 @@
                       <div class="card-title">Preencha o formulário abaixo</div>
                     </div>
                     <div class="card-body">
-                      <form action="../assets/php/clientes/create.php" method="post">
+                      <form action="./assets/php/clientes/create.php" method="post">
                         <div class="row">
                           <div class="col-md-6 col-6">
                             <div class="form-group">
@@ -280,7 +280,7 @@
          </div>
       </div>
     </div>
-    <?php include('../assets/php/partials/footer.php'); ?>
+    <?php include('./assets/php/partials/footer.php'); ?>
   </body>
 </html>
 
@@ -303,7 +303,7 @@
       $('#distribuidora').empty();
 
       // Carrega o arquivo JSON
-      $.getJSON('../assets/json/tarifas.json', function(data) {
+      $.getJSON('./assets/json/tarifas.json', function(data) {
         // Filtra os itens do JSON onde o uf é igual ao estado selecionado
         var itemsFiltrados = data.filter(function(item) {
           return item.uf === estadoSelecionado;

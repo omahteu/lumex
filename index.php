@@ -81,8 +81,8 @@
                 <h6 class="op-7 mb-2">Lumex Energia V.1</h6>
               </div>
               <div class="ms-md-auto py-2 py-md-0">
-                <a href="./tables/propostas.php" class="btn btn-label-info btn-round me-2">Propostas</a>
-                <a href="./forms/nova_proposta.php" class="btn btn-primary btn-round">Nova Proposta</a>
+                <a href="./propostas.php" class="btn btn-label-info btn-round me-2">Propostas</a>
+                <a href="./nova_proposta.php" class="btn btn-primary btn-round">Nova Proposta</a>
               </div>
             </div>
             <div class="row">

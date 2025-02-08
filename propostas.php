@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <?php include('../assets/php/partials/header.php') ?>
+    <?php include('./assets/php/partials/header.php') ?>
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
@@ -8,7 +8,7 @@
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <?php include('../assets/php/partials/logo.php') ?>
+            <?php include('./assets/php/partials/logo.php') ?>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
                 <i class="gg-menu-right"></i>
@@ -26,14 +26,14 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <?php include('../assets/php/partials/menu.php'); ?>
+                <?php include('./assets/php/partials/menu.php'); ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#submenu">
                         <i class="fas fa-bars"></i>
                         <p>Dados</p>
                         <span class="caret"></span>
                     </a>
-                    <?php include('../assets/php/partials/submenu.php') ?>
+                    <?php include('./assets/php/partials/submenu.php') ?>
                 </li>
             </ul>
           </div>
@@ -46,9 +46,9 @@
           <div class="main-header-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-              <a href="../index.html" class="logo">
+              <a href="./index.html" class="logo">
                 <img
-                  src="../assets/img/kaiadmin/logo_light.svg"
+                  src="./assets/img/kaiadmin/logo_light.svg"
                   alt="navbar brand"
                   class="navbar-brand"
                   height="20"
@@ -146,7 +146,7 @@
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="../assets/img/jm_denis.jpg"
+                                src="./assets/img/jm_denis.jpg"
                                 alt="Img Profile"
                               />
                             </div>
@@ -159,7 +159,7 @@
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="../assets/img/chadengle.jpg"
+                                src="./assets/img/chadengle.jpg"
                                 alt="Img Profile"
                               />
                             </div>
@@ -172,7 +172,7 @@
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="../assets/img/mlane.jpg"
+                                src="./assets/img/mlane.jpg"
                                 alt="Img Profile"
                               />
                             </div>
@@ -187,7 +187,7 @@
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="../assets/img/talha.jpg"
+                                src="./assets/img/talha.jpg"
                                 alt="Img Profile"
                               />
                             </div>
@@ -255,7 +255,7 @@
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="../assets/img/profile2.jpg"
+                                src="./assets/img/profile2.jpg"
                                 alt="Img Profile"
                               />
                             </div>
@@ -373,7 +373,7 @@
                   >
                     <div class="avatar-sm">
                       <img
-                        src="../assets/img/profile.jpg"
+                        src="./assets/img/profile.jpg"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />
@@ -389,7 +389,7 @@
                         <div class="user-box">
                           <div class="avatar-lg">
                             <img
-                              src="../assets/img/profile.jpg"
+                              src="./assets/img/profile.jpg"
                               alt="image profile"
                               class="avatar-img rounded"
                             />
@@ -1016,18 +1016,18 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="./assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/core/popper.min.js"></script>
+    <script src="./assets/js/core/bootstrap.min.js"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="./assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
     <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="./assets/js/plugin/datatables/datatables.min.js"></script>
     <!-- Kaiadmin JS -->
-    <script src="../assets/js/kaiadmin.min.js"></script>
+    <script src="./assets/js/kaiadmin.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="../assets/js/setting-demo2.js"></script>
+    <script src="./assets/js/setting-demo2.js"></script>
     <script>
       $(document).ready(function () {
         $("#basic-datatables").DataTable({});
