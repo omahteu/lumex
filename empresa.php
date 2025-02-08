@@ -38,7 +38,7 @@
           <div class="main-header-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-              <a href="../index.php" class="logo">
+              <a href="./index.php" class="logo">
                 <img
                   src="#"
                   alt="navbar brand"
