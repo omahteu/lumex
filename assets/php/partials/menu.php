@@ -22,3 +22,29 @@
         <p>Minha empresa</p>
     </a>
 </li>
+<li class="nav-item">
+    <a data-bs-toggle="collapse" href="#submenu">
+        <i class="fas fa-bars"></i>
+        <p>Dados</p>
+        <span class="caret"></span>
+    </a>
+    <div class="collapse" id="submenu">
+        <ul class="nav nav-collapse" id="submenu-list">
+            <li>
+                <a href="./clientes.php">
+                    <span class="sub-item">Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="./irradiacoes.php">
+                    <span class="sub-item">Irradiações</span>
+                </a>
+            </li>
+            <li>
+                <a href="./produtos.php">
+                    <span class="sub-item">Produtos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>

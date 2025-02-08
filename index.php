@@ -27,14 +27,6 @@
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
               <?php include('./assets/php/partials/menu.php'); ?>
-              <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#submenu">
-                  <i class="fas fa-bars"></i>
-                  <p>Dados</p>
-                  <span class="caret"></span>
-                </a>
-                <?php include('./assets/php/partials/submenu.php') ?>
-              </li>
             </ul>
           </div>
         </div>
