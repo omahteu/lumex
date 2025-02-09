@@ -39,12 +39,7 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
               <a href="../index.php" class="logo">
-                <img
-                  src="#"
-                  alt="navbar brand"
-                  class="navbar-brand"
-                  height="20"
-                />
+                <img src="#" alt="navbar brand" class="navbar-brand" height="20"/>
               </a>
               <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -82,10 +77,7 @@
                   <div class="card-body">
                     <?php
                     require_once './assets/php/crud.php';
-
                     $db = new Database();
-
-                    // Consulta para buscar todas as informações de irradiação
                     $query = "SELECT * FROM irradiacoes";
                     $resultado = json_decode($db->executeQuery($query), true);
                     ?>
