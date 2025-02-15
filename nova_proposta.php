@@ -174,13 +174,7 @@
                         <div class="row">
                           <div class="col-md6 col-2">
                             <div class="form-group">
-                              <select name="painel" id="painel" class="form-control">
-                                <option value="" hidden>Painel</option>
-                                <option value="550">550</option>
-                                <option value="570">570</option>
-                                <option value="590">590</option>
-                                <option value="690">690</option>
-                              </select>
+                              <input type="text" class="form-control" name="painel" id="painel" placeholder="Potência">
                               <small id="painel_help2" class="form-text text-muted">(Watts)</small>
                             </div>
                           </div>
@@ -209,7 +203,7 @@
                           </div>
                         </div>
                         <div class="card-action">
-                          <button class="btn btn-success">Gerar proposta</button>
+                          <button class="btn btn-success" id="btnSalvar">Salvar</button>
                           <button class="btn btn-danger">Limpar</button>
                         </div>
                       </form>
@@ -263,33 +257,76 @@
   }
 </script>
 
+<!-- Cálculo da potência do kit -->
 <script>
   $(document).ready(function () {
-      function calcularPotencia() {
-          let mediaConsumo = parseFloat($('#mediaConsumo').text()) || 0;
-          let quantidadeDias = parseFloat($('#quantidade_dias').val()) || 1;
-          let virradiacao = parseFloat($('#virradiacao').text()) || 1;
-          let eficiencia = parseFloat($('#eficiencia').val()) || 0;
 
-          if (quantidadeDias > 0 && virradiacao > 0 && eficiencia > 0) {
-            console.log(mediaConsumo / quantidadeDias / virradiacao)
-            console.log(eficiencia / 100)
-            let potenciaKit = (mediaConsumo / quantidadeDias / virradiacao) * (eficiencia / 100);
-            console.log(potenciaKit)
-            $('#potencia_kit').val(potenciaKit.toFixed(2));
-          } else {
-            $('#potencia_kit').val(0);
-          }
+    function calcularPotenciaKit(valor1, valor2, valor3, porcentagem) {
+      let mediaConsumo = parseFloat($('#mediaConsumo').text()) || 0;
+      let quantidadeDias = parseFloat($('#quantidade_dias').val()) || 1;
+      let virradiacao = parseFloat($('#virradiacao').text()) || 1;
+      let eficiencia = parseFloat($('#eficiencia').val()) || 0;
+      return (mediaConsumo / quantidadeDias / virradiacao) / (eficiencia / 100);
+    }
+
+    $('#eficiencia').on('input', function () {
+      let potencia_kit = calcularPotenciaKit()
+      $('#potencia_kit').val(potencia_kit.toFixed(2))
+    });
+
+    $('#quantidade_dias').on('input', function () {
+      if ($('#eficiencia').val()) {
+        let potencia_kit = calcularPotenciaKit()
+        $('#potencia_kit').val(potencia_kit.toFixed(2))
       }
-
-      $('#eficiencia').on('input', function () {
-        calcularPotencia();
-      });
-
-      $('#quantidade_dias').on('input', function () {
-          if ($('#eficiencia').val()) {
-            calcularPotencia();
-          }
-      });
+    });
   });
+</script>
+
+<!-- Cálculo da potência do painel -->
+<script>
+  $(document).ready(function() {
+    function calcularPotenciaPainel(potenciaPainel) {
+      let potenciaKit = $('#potencia_kit').val()
+      
+      let potenciaConvertida = potenciaPainel / 1000;
+
+      $("#potencia_painel").val(potenciaConvertida)
+
+      let quantidadePaineis = Math.ceil(potenciaKit / potenciaConvertida);
+      return quantidadePaineis;
+    }
+
+    $(document).on("input", "#painel", function() {
+      let valor = $(this).val()
+      let calculo_potencia_painel = calcularPotenciaPainel(valor)
+      $("#quantidade_painel").val(calculo_potencia_painel)
+    })
+
+    
+  })
+</script>
+
+<!-- Salvar e passar para a parte financeira -->
+<script>
+  $(document).ready(function() {
+    $("#btnSalvar").on("click", function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+        
+        let form = $(this).closest("form"); // Encontra o formulário mais próximo
+        let formData = {};
+        
+        form.find("input, select, textarea").each(function() {
+            let name = $(this).attr("name");
+            let value = $(this).val();
+            if (name) {
+                formData[name] = value;
+            }
+        });
+        
+        sessionStorage.setItem("formData", JSON.stringify(formData));
+        
+        window.location.href = "nova_proposta_financeiro.php"; // Altere para a URL desejada
+    });
+});
 </script>
