@@ -69,20 +69,17 @@
                     <div class="d-flex align-items-center">
                       <h4 class="card-title">Clientes</h4>
                       <button class="btn btn-primary btn-round ms-auto" id="btn_novo_cliente">
-                          <i class="fa fa-plus"></i>
-                          Novo cliente
+                        <i class="fa fa-plus"></i>
+                        Novo cliente
                       </button>
                     </div>
                   </div>
                   <div class="card-body">
                     <?php
-                    require_once './assets/php/crud.php';
-
-                    $db = new Database();
-
-                    // Consulta para buscar todos os clientes
-                    $query = "SELECT * FROM clientes";
-                    $resultado = json_decode($db->executeQuery($query), true);
+                      require_once './assets/php/crud.php';
+                      $db = new Database();
+                      $query = "SELECT * FROM clientes";
+                      $resultado = json_decode($db->executeQuery($query), true);
                     ?>
                     <div class="table-responsive">
                       <table id="add-row" class="display table table-striped table-hover">
@@ -149,7 +146,7 @@
                                 <td><?= htmlspecialchars($cliente['distribuidora']) ?></td>
                                 <td>
                                   <div class="form-button-action">
-                                    <a href="clientes.php?id=<?= $produto['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
+                                    <a href="clientes.php?id=<?= $cliente['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
                                       <i class="fa fa-edit"></i>
                                     </a>
                                     <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
