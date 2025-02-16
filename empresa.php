@@ -1,8 +1,4 @@
-<?php
-session_start();
-$message = $_SESSION['message'] ?? null;
-unset($_SESSION['message']);
-?>
+<?php include("./assets/php/partials/sessao.php"); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -215,67 +211,52 @@ unset($_SESSION['message']);
   </body>
 </html>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-
 <script>
   $(document).ready(function () {
-    // Lista de estados
     let estados = {
-        "AC": "Acre",
-        "AL": "Alagoas",
-        "AP": "Amapá",
-        "AM": "Amazonas",
-        "BA": "Bahia",
-        "CE": "Ceará",
-        "DF": "Distrito Federal",
-        "ES": "Espírito Santo",
-        "GO": "Goiás",
-        "MA": "Maranhão",
-        "MT": "Mato Grosso",
-        "MS": "Mato Grosso do Sul",
-        "MG": "Minas Gerais",
-        "PA": "Pará",
-        "PB": "Paraíba",
-        "PR": "Paraná",
-        "PE": "Pernambuco",
-        "PI": "Piauí",
-        "RJ": "Rio de Janeiro",
-        "RN": "Rio Grande do Norte",
-        "RS": "Rio Grande do Sul",
-        "RO": "Rondônia",
-        "RR": "Roraima",
-        "SC": "Santa Catarina",
-        "SP": "São Paulo",
-        "SE": "Sergipe",
-        "TO": "Tocantins"
+      "AC": "Acre",
+      "AL": "Alagoas",
+      "AP": "Amapá",
+      "AM": "Amazonas",
+      "BA": "Bahia",
+      "CE": "Ceará",
+      "DF": "Distrito Federal",
+      "ES": "Espírito Santo",
+      "GO": "Goiás",
+      "MA": "Maranhão",
+      "MT": "Mato Grosso",
+      "MS": "Mato Grosso do Sul",
+      "MG": "Minas Gerais",
+      "PA": "Pará",
+      "PB": "Paraíba",
+      "PR": "Paraná",
+      "PE": "Pernambuco",
+      "PI": "Piauí",
+      "RJ": "Rio de Janeiro",
+      "RN": "Rio Grande do Norte",
+      "RS": "Rio Grande do Sul",
+      "RO": "Rondônia",
+      "RR": "Roraima",
+      "SC": "Santa Catarina",
+      "SP": "São Paulo",
+      "SE": "Sergipe",
+      "TO": "Tocantins"
     };
-
-    // Preencher o select de estados
     $.each(estados, function (sigla, nome) {
-        $("#estado").append(new Option(nome, sigla));
+      $("#estado").append(new Option(nome, sigla));
     });
-
-    // Preencher o estado automaticamente
-    const estadoSelecionado = "<?= $estadoSelecionado ?>"; // Pegando valor do PHP
-    const cidadeSelecionada = "<?= $cidadeSelecionada ?>"; // Pegando valor do PHP
-
-    $("#estado").val(estadoSelecionado).trigger('change'); // Setar estado
-
-    // Evento de mudança do estado
+    const estadoSelecionado = "<?= $estadoSelecionado ?>";
+    const cidadeSelecionada = "<?= $cidadeSelecionada ?>";
+    $("#estado").val(estadoSelecionado).trigger('change');
     $("#estado").on("change", function () {
       let estadoSelecionado = $(this).val();
       $("#cidade").empty().append(new Option("Carregando...", "", true, true));
-
       if (estadoSelecionado) {
         $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
-          $("#cidade").empty().append(new Option("Cidade", "", true, true)); // Resetar as opções de cidade
-
+          $("#cidade").empty().append(new Option("Cidade", "", true, true));
           $.each(data, function (index, cidade) {
             $("#cidade").append(new Option(cidade.nome, cidade.nome));
           });
-
-          // Selecionar a cidade automaticamente após preencher as cidades
           if (cidadeSelecionada) {
             $("#cidade").val(cidadeSelecionada);
           }
@@ -284,28 +265,10 @@ unset($_SESSION['message']);
         $("#cidade").empty().append(new Option("Cidade", "", true, true));
       }
     });
-
-    // Disparar a mudança de estado manualmente para carregar as cidades ao carregar a página
     if (estadoSelecionado) {
       $("#estado").trigger('change');
     }
   });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        <?php if ($message): ?>
-            iziToast.<?= $message['type'] ?>({
-                title: "<?= ucfirst($message['type']) ?>",
-                message: "<?= $message['text'] ?>",
-                position: "topRight",
-                timeout: 3000, // Fecha automaticamente em 3 segundos
-                transitionIn: "fadeInDown",
-                transitionOut: "fadeOutUp",
-                close: false, // Remove o botão de fechar manualmente
-                progressBar: true
-            });
-        <?php endif; ?>
-    });
-</script>
-
+<?php include("./assets/php/partials/notificacoes.php"); ?>

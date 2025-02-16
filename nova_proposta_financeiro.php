@@ -154,10 +154,8 @@
   $(document).ready(function() {
     if (sessionStorage.getItem("formData")) {
       let formData = JSON.parse(sessionStorage.getItem("formData"));
-
       let tbody = document.getElementById("resumo_proposta");
       tbody.innerHTML = "";
-
       let newRow = `
         <tr>
           <td>${formData.cliente || ''}</td>
@@ -171,7 +169,6 @@
           <td>${formData.estrutura || ''}</td>
         </tr>
       `;
-
       tbody.innerHTML += newRow;
     }
   });
@@ -186,7 +183,6 @@
       let total = valorkit + (valorkit * (margem / 100));
       $("#total_proposta").val(`R$ ${total.toFixed(2)}`);
     }
-
     $("#valorkit, #margem").on("input", function() {
       this.value = this.value.replace(/[^0-9.]/g, "");
       atualizarTotal();

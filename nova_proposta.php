@@ -226,11 +226,9 @@
     const mediaConsumo = document.querySelector(`#cliente option[value="${clienteId}"]`).getAttribute('data-media');
     const distribuidora = document.querySelector(`#cliente option[value="${clienteId}"]`).getAttribute('data-distribuidora');
     const descricaoUnidade = document.querySelector(`#cliente option[value="${clienteId}"]`).getAttribute('data-descricao');
-
     document.getElementById('clienteNome').textContent = clienteNome;
     document.getElementById('mediaConsumo').textContent = `${parseFloat(mediaConsumo).toFixed(1)} Kw/h`
     document.getElementById('descricaoUnidade').textContent = descricaoUnidade;
-
     fetch('../assets/json/tarifas.json')
       .then(response => response.json())
       .then(tarifas => {
@@ -260,7 +258,6 @@
 <!-- Cálculo da potência do kit -->
 <script>
   $(document).ready(function () {
-
     function calcularPotenciaKit(valor1, valor2, valor3, porcentagem) {
       let mediaConsumo = parseFloat($('#mediaConsumo').text()) || 0;
       let quantidadeDias = parseFloat($('#quantidade_dias').val()) || 1;
@@ -268,12 +265,10 @@
       let eficiencia = parseFloat($('#eficiencia').val()) || 0;
       return (mediaConsumo / quantidadeDias / virradiacao) / (eficiencia / 100);
     }
-
     $('#eficiencia').on('input', function () {
       let potencia_kit = calcularPotenciaKit()
       $('#potencia_kit').val(potencia_kit.toFixed(2))
     });
-
     $('#quantidade_dias').on('input', function () {
       if ($('#eficiencia').val()) {
         let potencia_kit = calcularPotenciaKit()
@@ -288,22 +283,16 @@
   $(document).ready(function() {
     function calcularPotenciaPainel(potenciaPainel) {
       let potenciaKit = $('#potencia_kit').val()
-      
       let potenciaConvertida = potenciaPainel / 1000;
-
       $("#potencia_painel").val(potenciaConvertida)
-
       let quantidadePaineis = Math.ceil(potenciaKit / potenciaConvertida);
       return quantidadePaineis;
     }
-
     $(document).on("input", "#painel", function() {
       let valor = $(this).val()
       let calculo_potencia_painel = calcularPotenciaPainel(valor)
       $("#quantidade_painel").val(calculo_potencia_painel)
     })
-
-    
   })
 </script>
 
@@ -311,22 +300,18 @@
 <script>
   $(document).ready(function() {
     $("#btnSalvar").on("click", function(event) {
-        event.preventDefault(); // Impede o envio padrão do formulário
-        
-        let form = $(this).closest("form"); // Encontra o formulário mais próximo
-        let formData = {};
-        
-        form.find("input, select, textarea").each(function() {
-            let name = $(this).attr("name");
-            let value = $(this).val();
-            if (name) {
-                formData[name] = value;
-            }
-        });
-        
-        sessionStorage.setItem("formData", JSON.stringify(formData));
-        
-        window.location.href = "nova_proposta_financeiro.php"; // Altere para a URL desejada
+      event.preventDefault();
+      let form = $(this).closest("form");
+      let formData = {};
+      form.find("input, select, textarea").each(function() {
+        let name = $(this).attr("name");
+        let value = $(this).val();
+        if (name) {
+          formData[name] = value;
+        }
+      });
+      sessionStorage.setItem("formData", JSON.stringify(formData));
+      window.location.href = "nova_proposta_financeiro.php";
     });
-});
+  });
 </script>

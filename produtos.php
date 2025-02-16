@@ -1,8 +1,4 @@
-<?php
-session_start();
-$message = $_SESSION['message'] ?? null;
-unset($_SESSION['message']);
-?>
+<?php include("./assets/php/partials/sessao.php"); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -70,82 +66,68 @@ unset($_SESSION['message']);
 
           <!-- End Navbar -->
         </div>
-
         <div class="container">
-            <div class="page-inner">
-              <div class="page-header">
-                <ul class="breadcrumbs mb-3">
-                  <li class="nav-home">
-                    <a href="./index.php">
-                      <i class="icon-home"></i>
-                    </a>
-                  </li>
-                  <li class="separator">
-                    <i class="icon-arrow-right"></i>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./produtos.php">Produtos</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <div class="card-title">Preencha o formulário abaixo</div>
-                    </div>
-                    <div class="card-body">
-                      <form action="./assets/php/produtos/create.php" method="post">
-                        <div class="row">
-                          <div class="col-md-6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do produto"/>
-                              <small id="nome_help" class="form-text text-muted">Nome do produto</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="ncm" id="ncm" placeholder="NCM do produto"/>
-                              <small id="ncm_help" class="form-text text-muted">Somente números</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do produto"/>
-                              <small id="descricao_help" class="form-text text-muted">Descrição do produto</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor"/>
-                              <small id="fornecedor_help" class="form-text text-muted">Fornecedor do produto</small>
-                            </div>
+          <div class="page-inner">
+            <div class="page-header">
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                  <a href="./index.php">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="./produtos.php">Produtos</a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Preencha o formulário abaixo</div>
+                  </div>
+                  <div class="card-body">
+                    <form action="./assets/php/produtos/create.php" method="post">
+                      <div class="row">
+                        <div class="col-md-6 col-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do produto"/>
+                            <small id="nome_help" class="form-text text-muted">Nome do produto</small>
                           </div>
                         </div>
-                        <div class="card-action">
-                          <button class="btn btn-success">Salvar</button>
-                          <button class="btn btn-danger">Limpar</button>
+                        <div class="col-md-6 col-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="ncm" id="ncm" placeholder="NCM do produto"/>
+                            <small id="ncm_help" class="form-text text-muted">Somente números</small>
+                          </div>
                         </div>
-                      </form>
-                    </div>
+                        <div class="col-md-6 col-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do produto"/>
+                            <small id="descricao_help" class="form-text text-muted">Descrição do produto</small>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor"/>
+                            <small id="fornecedor_help" class="form-text text-muted">Fornecedor do produto</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-action">
+                        <button class="btn btn-success">Salvar</button>
+                        <button class="btn btn-danger">Limpar</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-         </div>
-
-        <footer class="footer">
-          <!-- <div class="container-fluid d-flex justify-content-between">
-            <div class="copyright">
-              2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
-            </div>
-            <div>
-              Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-            </div>
-          </div> -->
-        </footer>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -153,22 +135,4 @@ unset($_SESSION['message']);
   </body>
 </html>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        <?php if ($message): ?>
-            iziToast.<?= $message['type'] ?>({
-                title: "<?= ucfirst($message['type']) ?>",
-                message: "<?= $message['text'] ?>",
-                position: "topRight",
-                timeout: 3000, // Fecha automaticamente em 3 segundos
-                transitionIn: "fadeInDown",
-                transitionOut: "fadeOutUp",
-                close: false, // Remove o botão de fechar manualmente
-                progressBar: true
-            });
-        <?php endif; ?>
-    });
-</script>
+<?php include("./assets/php/partials/notificacoes.php"); ?>
