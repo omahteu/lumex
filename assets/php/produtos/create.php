@@ -4,14 +4,15 @@ require_once "../crud.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = new Database();
-    
+
+    $id = $_POST['id'] ?? null;
     $nome = trim($_POST['nome'] ?? '');
     $ncm = trim($_POST['ncm'] ?? '');
     $descricao = trim($_POST['descricao'] ?? '');
     $fornecedor = trim($_POST['fornecedor'] ?? '');
-    
+
     $errors = [];
-    
+
     if (empty($nome)) {
         $errors['nome'] = 'O campo Nome do produto é obrigatório.';
     }
@@ -24,35 +25,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($fornecedor)) {
         $errors['fornecedor'] = 'O campo Fornecedor é obrigatório.';
     }
-    
+
     if (!empty($errors)) {
         echo json_encode(['success' => false, 'errors' => $errors]);
         exit;
     }
-    
-    $query = "INSERT INTO produtos (nome, ncm, descricao, fornecedor) VALUES (?, ?, ?, ?)";
-    $params = [$nome, $ncm, $descricao, $fornecedor];
-    
-    $result = $db->executeQuery($query, $params);
-    
-    if ($result) {
-        echo json_encode(['success' => true, 'message' => 'Produto salvo com sucesso.']);
+
+    if (!empty($id)) {
+        // Atualização
+        $query = "UPDATE produtos SET nome = ?, ncm = ?, descricao = ?, fornecedor = ? WHERE id = ?";
+        $params = [$nome, $ncm, $descricao, $fornecedor, $id];
+        $action = "atualizado";
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco de dados.']);
+        // Inserção
+        $query = "INSERT INTO produtos (nome, ncm, descricao, fornecedor) VALUES (?, ?, ?, ?)";
+        $params = [$nome, $ncm, $descricao, $fornecedor];
+        $action = "cadastrado";
     }
+
+    $result = $db->executeQuery($query, $params);
 
     if ($result) {
         $_SESSION['message'] = [
             'type' => 'success',
-            'text' => 'Produto cadastrado com sucesso!'
+            'text' => "Produto $action com sucesso!"
         ];
     } else {
         $_SESSION['message'] = [
             'type' => 'error',
-            'text' => 'Erro ao cadastrar o Produto.'
+            'text' => "Erro ao $action o produto."
         ];
     }
-    
+
     header("Location: ../../../produtos.php");
     exit;
+} else {
+    echo json_encode(["success" => false, "message" => "Método inválido."]);
 }

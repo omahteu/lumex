@@ -1,5 +1,21 @@
 <?php include("./assets/php/partials/sessao.php"); ?>
 
+<?php
+  require_once './assets/php/crud.php';
+
+  $db = new Database();
+  $produtos = null;
+
+  if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $query = "SELECT * FROM produtos WHERE id = $id";
+    $resultado = json_decode($db->executeQuery($query), true);
+    if (!empty($resultado)) {
+      $produtos = $resultado[0];
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <?php include("./assets/php/partials/header.php"); ?>
@@ -94,28 +110,29 @@
                       <div class="row">
                         <div class="col-md-6 col-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do produto"/>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do produto" value="<?= htmlspecialchars($produtos['nome'] ?? '') ?>"/>
                             <small id="nome_help" class="form-text text-muted">Nome do produto</small>
                           </div>
                         </div>
                         <div class="col-md-6 col-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" name="ncm" id="ncm" placeholder="NCM do produto"/>
+                            <input type="text" class="form-control" name="ncm" id="ncm" placeholder="NCM do produto" value="<?= htmlspecialchars($produtos['ncm'] ?? '') ?>"/>
                             <small id="ncm_help" class="form-text text-muted">Somente números</small>
                           </div>
                         </div>
                         <div class="col-md-6 col-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do produto"/>
+                            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do produto" value="<?= htmlspecialchars($produtos['descricao'] ?? '') ?>"/>
                             <small id="descricao_help" class="form-text text-muted">Descrição do produto</small>
                           </div>
                         </div>
                         <div class="col-md-6 col-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor"/>
+                            <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor" value="<?= htmlspecialchars($produtos['fornecedor'] ?? '') ?>"/>
                             <small id="fornecedor_help" class="form-text text-muted">Fornecedor do produto</small>
                           </div>
                         </div>
+                        <input type="hidden" name="id" value="<?= $produtos['id'] ?? '' ?>">
                       </div>
                       <div class="card-action">
                         <button class="btn btn-success">Salvar</button>

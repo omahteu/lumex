@@ -75,48 +75,48 @@
                   </div>
                   <div class="card-body">
                     <?php
-                    require_once './assets/php/crud.php';
-                    $db = new Database();
-                    $query = "SELECT * FROM produtos";
-                    $resultado = json_decode($db->executeQuery($query), true);
+                      require_once './assets/php/crud.php';
+                      $db = new Database();
+                      $query = "SELECT * FROM produtos";
+                      $resultado = json_decode($db->executeQuery($query), true);
                     ?>
                     <div class="table-responsive">
                       <table id="add-row" class="display table table-striped table-hover">
-                          <thead>
+                        <thead>
+                          <tr>
+                            <th>Nome</th>
+                            <th>NCM</th>
+                            <th>Descrição</th>
+                            <th>Fornecedor</th>
+                            <th style="width: 10%">Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php if (!empty($resultado)) : ?>
+                            <?php foreach ($resultado as $produto) : ?>
                               <tr>
-                                  <th>Nome</th>
-                                  <th>NCM</th>
-                                  <th>Descrição</th>
-                                  <th>Fornecedor</th>
-                                  <th style="width: 10%">Ações</th>
+                                <td><?= htmlspecialchars($produto['nome']) ?></td>
+                                <td><?= htmlspecialchars($produto['ncm']) ?></td>
+                                <td><?= htmlspecialchars($produto['descricao']) ?></td>
+                                <td><?= htmlspecialchars($produto['fornecedor']) ?></td>
+                                <td>
+                                  <div class="form-button-action">
+                                    <a href="produtos.php?id=<?= $produto['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+                                    <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
+                                      <i class="fa fa-times"></i>
+                                    </button>
+                                  </div>
+                                </td>
                               </tr>
-                          </thead>
-                          <tbody>
-                              <?php if (!empty($resultado)) : ?>
-                                  <?php foreach ($resultado as $produto) : ?>
-                                      <tr>
-                                          <td><?= htmlspecialchars($produto['nome']) ?></td>
-                                          <td><?= htmlspecialchars($produto['ncm']) ?></td>
-                                          <td><?= htmlspecialchars($produto['descricao']) ?></td>
-                                          <td><?= htmlspecialchars($produto['fornecedor']) ?></td>
-                                          <td>
-                                              <div class="form-button-action">
-                                                  <button type="button" data-bs-toggle="tooltip" title="Editar" class="btn btn-link btn-primary btn-lg">
-                                                      <i class="fa fa-edit"></i>
-                                                  </button>
-                                                  <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
-                                                      <i class="fa fa-times"></i>
-                                                  </button>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                  <?php endforeach; ?>
-                              <?php else : ?>
-                                  <tr>
-                                      <td colspan="5" class="text-center">Nenhum produto encontrado.</td>
-                                  </tr>
-                              <?php endif; ?>
-                          </tbody>
+                            <?php endforeach; ?>
+                          <?php else : ?>
+                            <tr>
+                              <td colspan="5" class="text-center">Nenhum produto encontrado.</td>
+                            </tr>
+                          <?php endif; ?>
+                        </tbody>
                       </table>
                     </div>
                   </div>
