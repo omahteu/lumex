@@ -1,3 +1,9 @@
+<?php
+session_start();
+$message = $_SESSION['message'] ?? null;
+unset($_SESSION['message']); // Remove a mensagem para não exibir novamente ao recarregar a página
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <?php include("./assets/php/partials/header.php"); ?>
@@ -68,10 +74,9 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Clientes</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
-                    <a href="#">
+                    <a href="./index.php">
                       <i class="icon-home"></i>
                     </a>
                   </li>
@@ -79,7 +84,7 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Clientes</a>
+                    <a href="./clientes.php">Clientes</a>
                   </li>
                 </ul>
               </div>
@@ -277,6 +282,7 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
 <script>
   $(document).ready(function() {
     // Ao mudar o valor do input estado
@@ -318,4 +324,21 @@
       });
     });
   });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        <?php if ($message): ?>
+            iziToast.<?= $message['type'] ?>({
+                title: "<?= ucfirst($message['type']) ?>",
+                message: "<?= $message['text'] ?>",
+                position: "topRight",
+                timeout: 3000, // Fecha automaticamente em 3 segundos
+                transitionIn: "fadeInDown",
+                transitionOut: "fadeOutUp",
+                close: false, // Remove o botão de fechar manualmente
+                progressBar: true
+            });
+        <?php endif; ?>
+    });
 </script>

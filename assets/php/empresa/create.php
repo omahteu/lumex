@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../crud.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -46,24 +47,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (!empty($errors)) {
-        echo json_encode(['success' => false, 'errors' => $errors]);
+        $_SESSION['error'] = json_encode($errors);
+        header("Location: empresa.php");
         exit;
     }
 
-    // Ajustando para realizar um update
+    // Atualizando a empresa
     $query = "UPDATE empresa SET 
                 razao_social = ?, cnpj = ?, tipo_logradouro = ?, logradouro = ?, 
                 numero = ?, complemento = ?, cep = ?, estado = ?, cidade = ?, bairro = ? 
-              WHERE id = 1"; // Aqui você está atualizando o registro com id = 1
+              WHERE id = 1"; 
 
     $params = [$razao_social, $cnpj, $tipo_logradouro, $logradouro, $numero, $complemento, $cep, $estado, $cidade, $bairro];
     
     $result = $db->executeQuery($query, $params);
     
     if ($result) {
-        echo json_encode(['success' => true, 'message' => 'Empresa atualizada com sucesso.']);
+        $_SESSION['message'] = ['type' => 'success', 'text' => 'Empresa atualizada com sucesso.'];
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar no banco de dados.']);
+        $_SESSION['message'] = ['type' => 'error', 'text' => 'Erro ao atualizar no banco de dados.'];
     }
+
+    header("Location: ../../../empresa.php");
+    exit;
 }
 ?>

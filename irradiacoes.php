@@ -1,3 +1,9 @@
+<?php
+session_start();
+$message = $_SESSION['message'] ?? null;
+unset($_SESSION['message']);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <?php include "./assets/php/partials/header.php"; ?>
@@ -69,10 +75,9 @@
         <div class="container">
             <div class="page-inner">
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Irradiações</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
-                    <a href="#">
+                    <a href="./index.php">
                       <i class="icon-home"></i>
                     </a>
                   </li>
@@ -80,7 +85,7 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Irradiações</a>
+                    <a href="./irradiacoes.php">Irradiações</a>
                   </li>
                 </ul>
               </div>
@@ -137,59 +142,78 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
 <script>
-$(document).ready(function () {
-    // Lista de estados
-    let estados = {
-        "AC": "Acre",
-        "AL": "Alagoas",
-        "AP": "Amapá",
-        "AM": "Amazonas",
-        "BA": "Bahia",
-        "CE": "Ceará",
-        "DF": "Distrito Federal",
-        "ES": "Espírito Santo",
-        "GO": "Goiás",
-        "MA": "Maranhão",
-        "MT": "Mato Grosso",
-        "MS": "Mato Grosso do Sul",
-        "MG": "Minas Gerais",
-        "PA": "Pará",
-        "PB": "Paraíba",
-        "PR": "Paraná",
-        "PE": "Pernambuco",
-        "PI": "Piauí",
-        "RJ": "Rio de Janeiro",
-        "RN": "Rio Grande do Norte",
-        "RS": "Rio Grande do Sul",
-        "RO": "Rondônia",
-        "RR": "Roraima",
-        "SC": "Santa Catarina",
-        "SP": "São Paulo",
-        "SE": "Sergipe",
-        "TO": "Tocantins"
-    };
+  $(document).ready(function () {
+      // Lista de estados
+      let estados = {
+          "AC": "Acre",
+          "AL": "Alagoas",
+          "AP": "Amapá",
+          "AM": "Amazonas",
+          "BA": "Bahia",
+          "CE": "Ceará",
+          "DF": "Distrito Federal",
+          "ES": "Espírito Santo",
+          "GO": "Goiás",
+          "MA": "Maranhão",
+          "MT": "Mato Grosso",
+          "MS": "Mato Grosso do Sul",
+          "MG": "Minas Gerais",
+          "PA": "Pará",
+          "PB": "Paraíba",
+          "PR": "Paraná",
+          "PE": "Pernambuco",
+          "PI": "Piauí",
+          "RJ": "Rio de Janeiro",
+          "RN": "Rio Grande do Norte",
+          "RS": "Rio Grande do Sul",
+          "RO": "Rondônia",
+          "RR": "Roraima",
+          "SC": "Santa Catarina",
+          "SP": "São Paulo",
+          "SE": "Sergipe",
+          "TO": "Tocantins"
+      };
 
-    // Preencher o select de estados
-    $.each(estados, function (sigla, nome) {
-        $("#estado").append(new Option(nome, sigla));
-    });
+      // Preencher o select de estados
+      $.each(estados, function (sigla, nome) {
+          $("#estado").append(new Option(nome, sigla));
+      });
 
-    // Evento de mudança do estado
-    $("#estado").on("change", function () {
-        let estadoSelecionado = $(this).val();
-        $("#cidade").empty().append(new Option("Carregando...", "", true, true));
+      // Evento de mudança do estado
+      $("#estado").on("change", function () {
+          let estadoSelecionado = $(this).val();
+          $("#cidade").empty().append(new Option("Carregando...", "", true, true));
 
-        if (estadoSelecionado) {
-            $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
-                $("#cidade").empty().append(new Option("Cidade", "", true, true));
-                $.each(data, function (index, cidade) {
-                    $("#cidade").append(new Option(cidade.nome, cidade.nome));
-                });
+          if (estadoSelecionado) {
+              $.getJSON(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`, function (data) {
+                  $("#cidade").empty().append(new Option("Cidade", "", true, true));
+                  $.each(data, function (index, cidade) {
+                      $("#cidade").append(new Option(cidade.nome, cidade.nome));
+                  });
+              });
+          } else {
+              $("#cidade").empty().append(new Option("Cidade", "", true, true));
+          }
+      });
+  });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        <?php if ($message): ?>
+            iziToast.<?= $message['type'] ?>({
+                title: "<?= ucfirst($message['type']) ?>",
+                message: "<?= $message['text'] ?>",
+                position: "topRight",
+                timeout: 3000, // Fecha automaticamente em 3 segundos
+                transitionIn: "fadeInDown",
+                transitionOut: "fadeOutUp",
+                close: false, // Remove o botão de fechar manualmente
+                progressBar: true
             });
-        } else {
-            $("#cidade").empty().append(new Option("Cidade", "", true, true));
-        }
+        <?php endif; ?>
     });
-});
 </script>

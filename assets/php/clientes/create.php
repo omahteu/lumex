@@ -2,6 +2,7 @@
 require_once "../crud.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    session_start();
     $errors = [];
     $db = new Database();
     
@@ -25,6 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (!empty($errors)) {
+        $_SESSION['message'] = [
+            'type' => 'error',
+            'text' => implode("<br>", $errors)
+        ];
         echo json_encode(["status" => "error", "messages" => $errors]);
         exit;
     }
@@ -41,7 +46,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ];
 
     $result = $db->executeQuery($query, $params);
-    echo $result;
+    
+    if ($result) {
+        $_SESSION['message'] = [
+            'type' => 'success',
+            'text' => 'Cliente cadastrado com sucesso!'
+        ];
+    } else {
+        $_SESSION['message'] = [
+            'type' => 'error',
+            'text' => 'Erro ao cadastrar o cliente.'
+        ];
+    }
+
+    header("Location: ../../../clientes.php");
+    exit;
 } else {
     echo json_encode(["status" => "error", "message" => "Método inválido."]);
 }

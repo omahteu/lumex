@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../crud.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,4 +40,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco de dados.']);
     }
+
+    if ($result) {
+        $_SESSION['message'] = [
+            'type' => 'success',
+            'text' => 'Produto cadastrado com sucesso!'
+        ];
+    } else {
+        $_SESSION['message'] = [
+            'type' => 'error',
+            'text' => 'Erro ao cadastrar o Produto.'
+        ];
+    }
+    
+    header("Location: ../../../produtos.php");
+    exit;
 }
