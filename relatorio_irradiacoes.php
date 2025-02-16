@@ -100,9 +100,9 @@
                                 <td><?= htmlspecialchars($dados['irradiacao']) ?></td>
                                 <td>
                                   <div class="form-button-action">
-                                    <button type="button" data-bs-toggle="tooltip" title="Editar" class="btn btn-link btn-primary btn-lg">
+                                    <a href="irradiacoes.php?id=<?= $dados['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
                                       <i class="fa fa-edit"></i>
-                                    </button>
+                                    </a>
                                     <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
                                       <i class="fa fa-times"></i>
                                     </button>

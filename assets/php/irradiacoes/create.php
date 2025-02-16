@@ -5,6 +5,7 @@ require_once "../crud.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = new Database();
     
+    $id = $_POST['id'] ?? null;
     $estado = trim($_POST['estado'] ?? '');
     $cidade = trim($_POST['cidade'] ?? '');
     $irradiacao = trim($_POST['irradiacao'] ?? '');
@@ -26,23 +27,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    $query = "INSERT INTO irradiacoes (estado, cidade, irradiacao) VALUES (?, ?, ?)";
-    $params = [$estado, $cidade, $irradiacao];
+    if (!empty($id)) {
+        // Atualização
+        $query = "UPDATE irradiacoes SET estado = ?, cidade = ?, irradiacao = ? WHERE id = ?";
+        $params = [$estado, $cidade, $irradiacao, $id];
+        $action = "atualizado";
+    } else {
+        // Inserção
+        $query = "INSERT INTO irradiacoes (estado, cidade, irradiacao) VALUES (?, ?, ?)";
+        $params = [$estado, $cidade, $irradiacao];
+        $action = "cadastrado";
+    }
     
     $result = $db->executeQuery($query, $params);
     
     if ($result) {
         $_SESSION['message'] = [
             'type' => 'success',
-            'text' => 'Irradiação cadastrado com sucesso!'
+            'text' => "Irradiação $action com sucesso!"
         ];
     } else {
         $_SESSION['message'] = [
             'type' => 'error',
-            'text' => 'Erro ao cadastrar o irradiação.'
+            'text' => "Erro ao $action a irradiação."
         ];
     }
     
     header("Location: ../../../irradiacoes.php");
     exit;
+} else {
+    echo json_encode(["success" => false, "message" => "Método inválido."]);
 }
