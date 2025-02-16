@@ -68,7 +68,7 @@
                   <div class="card-header">
                     <div class="d-flex align-items-center">
                       <h4 class="card-title">Irradiações</h4>
-                      <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
+                      <button class="btn btn-primary btn-round ms-auto" id="btn_nova_irradiacao">
                           <i class="fa fa-plus"></i>
                           Nova irradiação
                       </button>
@@ -139,6 +139,14 @@
     <script src="./assets/js/kaiadmin.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="./assets/js/setting-demo2.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $(document).on("click", "#btn_nova_irradiacao", function() {
+          window.location.href = "./irradiacoes.php"
+        })
+      })
+    </script>
 
   </body>
 </html>

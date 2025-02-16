@@ -68,8 +68,8 @@
                   <div class="card-header">
                     <div class="d-flex align-items-center">
                       <h4 class="card-title">Produtos</h4>
-                      <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
-                        <i class="fa fa-plus"></i>Novo produto
+                      <button class="btn btn-primary btn-round ms-auto" id="btn_novo_produto">
+                        <i class="fa fa-plus"></i> Novo produto
                       </button>
                     </div>
                   </div>
@@ -140,5 +140,13 @@
     <script src="./assets/js/kaiadmin.min.js"></script>
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="./assets/js/setting-demo2.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $(document).on("click", "#btn_novo_produto", function() {
+          window.location.href = "./produtos.php"
+        })
+      })
+    </script>
   </body>
 </html>

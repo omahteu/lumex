@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li>
-                <a href="./produtos.php">
+                <a href="./relatorio_propostas.php">
                     <span class="sub-item">Propostas</span>
                 </a>
             </li>
