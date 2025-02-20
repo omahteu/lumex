@@ -1,3 +1,5 @@
+<?php include("./assets/php/partials/sessao.php"); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include('./assets/php/partials/header.php') ?>
@@ -78,7 +80,7 @@
                     <?php
                       require_once './assets/php/crud.php';
                       $db = new Database();
-                      $query = "SELECT * FROM clientes";
+                      $query = "SELECT * FROM clientes WHERE deleted_at IS NULL";
                       $resultado = json_decode($db->executeQuery($query), true);
                     ?>
                     <div class="table-responsive">
@@ -149,7 +151,7 @@
                                     <a href="clientes.php?id=<?= $cliente['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
                                       <i class="fa fa-edit"></i>
                                     </a>
-                                    <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
+                                    <button type="button" data-id="<?= $cliente['id'] ?>" title="Remover" class="btn btn-link btn-danger btn-remover">
                                       <i class="fa fa-times"></i>
                                     </button>
                                   </div>
@@ -172,19 +174,8 @@
         </div>
       </div>
     </div>
-    <!--   Core JS Files   -->
-    <script src="./assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="./assets/js/core/popper.min.js"></script>
-    <script src="./assets/js/core/bootstrap.min.js"></script>
 
-    <!-- jQuery Scrollbar -->
-    <script src="./assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-    <!-- Datatables -->
-    
-    <!-- Kaiadmin JS -->
-    <script src="./assets/js/kaiadmin.min.js"></script>
-    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="./assets/js/setting-demo2.js"></script>
+    <?php include('./assets/php/partials/footer.php'); ?>
 
     <script>
       $(document).ready(function() {
@@ -193,6 +184,34 @@
         })
       })
     </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".btn-remover").forEach(button => {
+          button.addEventListener("click", function () {
+            let clienteId = this.getAttribute("data-id");
+
+            if (confirm("Tem certeza que deseja remover este cliente?")) {
+              fetch("./assets/php/clientes/delete.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({ id: clienteId })
+              })
+              .then(response => {
+                if (response.ok) { // Confirma que a requisição deu certo
+                  location.reload(); // Atualiza a página para exibir a mensagem da session
+                } else {
+                  alert("Erro ao processar a requisição.");
+                }
+              })
+              .catch(error => console.error("Erro:", error));
+            }
+          });
+        });
+      });
+    </script>
+
+    <?php include("./assets/php/partials/notificacoes.php"); ?>
 
   </body>
 </html>

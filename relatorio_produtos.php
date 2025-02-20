@@ -77,7 +77,7 @@
                     <?php
                       require_once './assets/php/crud.php';
                       $db = new Database();
-                      $query = "SELECT * FROM produtos";
+                      $query = "SELECT * FROM produtos WHERE deleted_at IS NULL";
                       $resultado = json_decode($db->executeQuery($query), true);
                     ?>
                     <div class="table-responsive">
