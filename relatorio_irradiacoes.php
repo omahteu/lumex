@@ -146,7 +146,7 @@
             let clienteId = this.getAttribute("data-id");
 
             if (confirm("Tem certeza que deseja remover este cliente?")) {
-              fetch("./assets/php/clientes/delete.php", {
+              fetch("./assets/php/irradiacoes/delete.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams({ id: clienteId })
