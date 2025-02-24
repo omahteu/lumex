@@ -64,6 +64,21 @@
 
         <div class="container">
           <div class="page-inner">
+            <div class="page-header">
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                  <a href="./index.php">
+                    <i class="icon-home"></i>
+                  </a>
+                </li>
+                <li class="separator">
+                  <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                  <a href="./relatorio_produtos.php">Relatório de produtos</a>
+                </li>
+              </ul>
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="card">
@@ -106,7 +121,7 @@
                                     <a href="produtos.php?id=<?= $produto['id'] ?>" class="btn btn-link btn-primary btn-lg" title="Editar">
                                       <i class="fa fa-edit"></i>
                                     </a>
-                                    <button type="button" data-bs-toggle="tooltip" title="Remover" class="btn btn-link btn-danger">
+                                    <button type="button" data-id="<?= $produto['id'] ?>" title="Remover" class="btn btn-link btn-danger btn-remover">
                                       <i class="fa fa-times"></i>
                                     </button>
                                   </div>
