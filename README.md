@@ -1,1 +1,1 @@
-# Lumex Enérgia
+# Lumex Energia
